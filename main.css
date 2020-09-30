@@ -1,0 +1,255 @@
+
+.header {
+    padding: 1em;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+.secbutton-reload{
+    visibility: hidden;
+}
+.button-reload{
+    grid-area: button-reload;
+    align-content: center;
+    width: 300px;
+    min-width: 7em;
+    border-radius: 5px;
+    margin: auto;
+    height: 100%;
+}
+
+@media (max-width: 500px) {
+
+    .button-reload{
+        visibility: hidden;
+    }
+    .secbutton-reload{
+        visibility: visible;
+    }
+}
+
+
+.header.secbutton-reload{
+    grid-area: secbutton-reload;
+    justify-content: space-between;
+}
+
+.logo {
+    grid-area: logo;
+}
+
+.menu-horizontal{
+    grid-area: menu-horizontal;
+}
+
+
+.kekbody{
+    display: grid;
+    height: 200vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 40vh 15vh 1fr;
+    grid-template-areas: "main-city list-info" "serch-line serch-line" "list-sity list-sity";
+}
+@media (max-width: 500px) {
+    .kekbody{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:"main-city"
+        "list-info"
+        "serch-line"
+        "list-sity"
+    }
+}
+
+.main-city{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+            "sity sity"
+            "smile smile";
+}
+
+.main-city.city{
+    grid-area: city;
+}
+.main-city.smile{
+    grid-area: smile;
+}
+.main-city.temperature{
+    grid-area: temperature;
+}
+
+.serch{
+    height: 50%;
+}
+
+
+.list-info{
+    grid-area: list-info;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.serch-line{
+    grid-area: serch-line;
+    align-items: center;
+}
+
+.list-sity{
+    grid-area: list-sity;
+}
+
+.part{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: gray;
+    color: azure;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    height: 200%;
+    align-items: center;
+}
+
+
+.part.name{
+    position: fixed;
+    justify-content: center;
+}
+.part.info{
+    justify-content: center;
+    position: fixed;
+    margin: auto;
+}
+
+
+
+.the-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 40vh;
+}
+
+.serch-line{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.serch{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width:60%;
+    align-items: center;
+
+}
+
+@media (max-width: 500px) {
+    .serch-line{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        left: 10%;
+        padding: 20px;
+    }
+
+}
+
+.list-sity{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 48vh 48vh 48vh;
+    grid-template-areas: "card1 card2" "card3 card4" "card5 card6";
+}
+
+
+.card1-line{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+.center-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+.down{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 40vh;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.card2{
+    grid-area: card2;
+}
+.card3{
+    grid-area: card3;
+}
+.card4{
+    grid-area: card4;
+}
+.card5{
+    grid-area: card5;
+}
+.card6{
+    grid-area: card6;
+}
+
+
+.btn {
+    display:block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+@media (max-width: 500px) {
+    .list-sity{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:"card1"
+        "card2"
+        "card3"
+        "card4"
+        "card5"
+        "card6";
+    }
+}
+
+
+
+
+
+
+

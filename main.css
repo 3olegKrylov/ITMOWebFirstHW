@@ -5,16 +5,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width:90%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
 }
-.secbutton-reload{
+
+.secbutton-reload {
     visibility: hidden;
 
 }
-.button-reload{
+
+.button-reload {
     grid-area: button-reload;
     align-content: center;
     width: 300px;
@@ -27,16 +29,17 @@
 
 @media (max-width: 880px) {
 
-    .button-reload{
+    .button-reload {
         visibility: hidden;
     }
-    .secbutton-reload{
+
+    .secbutton-reload {
         visibility: visible;
     }
 }
 
 
-.header.secbutton-reload{
+.header.secbutton-reload {
     grid-area: secbutton-reload;
     justify-content: space-between;
 }
@@ -45,20 +48,23 @@
     grid-area: logo;
 }
 
-.menu-horizontal{
+.menu-horizontal {
     grid-area: menu-horizontal;
 }
 
 
-.kekbody{
+.kekbody {
     display: grid;
-    height: 200vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5fr;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 40vh 15vh 1fr;
     grid-template-areas: "main-city list-info" "serch-line serch-line" "list-sity list-sity";
 }
+
 @media (max-width: 880px) {
-    .kekbody{
+    .kekbody {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-template-areas:"main-city"
@@ -68,8 +74,8 @@
     }
 }
 
-.main-city{
-    width:80%;
+.main-city {
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -79,48 +85,51 @@
             "smile smile";
 }
 
-.main-city.city{
+.main-city.city {
     grid-area: city;
 }
-.main-city.smile{
+
+.main-city.smile {
     grid-area: smile;
 }
-.main-city.temperature{
+
+.main-city.temperature {
     grid-area: temperature;
 }
 
-.serch{
+.serch {
     height: 50px;
 }
 
 
-.list-info{
+.list-info {
     grid-area: list-info;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 40vh;
-    width:80%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
+
 @media (max-width: 880px) {
-    .list-info{
+    .list-info {
         padding-left: 0em;
         width: 80%;
     }
 }
 
-.serch-line{
+.serch-line {
     grid-area: serch-line;
     align-items: center;
 }
 
-.list-sity{
+.list-sity {
     grid-area: list-sity;
 }
 
-.part{
+.part {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -135,22 +144,20 @@
 }
 
 
-.part.name{
+.part.name {
     position: fixed;
     justify-content: center;
 }
-.part.info{
+
+.part.info {
     justify-content: center;
     position: fixed;
     margin: auto;
 }
 
 
-
-
-
-.serch-line{
-    width:90%;
+.serch-line {
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -159,17 +166,18 @@
     padding: 20px;
 
 }
-.serch{
+
+.serch {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width:60%;
+    width: 60%;
     align-items: center;
 
 }
 
 @media (max-width: 880px) {
-    .serch-line{
+    .serch-line {
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -178,32 +186,47 @@
         padding: 20px;
         align-items: flex-start;
     }
-    .serch{
+
+    .serch {
         justify-items: flex-start;
         justify-content: flex-start;
     }
 
 }
 
-.list-sity{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 48vh 48vh 48vh;
-    grid-template-areas: "card1 card2" "card3 card4" "card5 card6";
+/*Стили списка катрочек избранных городов*/
+.list-sity {
+    overflow: hidden;
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    float: left;
+    display: inline;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#double .card {
+    width: 50%;
 }
 
 
-.card1-line{
+.card1-line {
     padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width:90%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
 }
-.center-info{
+
+.center-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -212,37 +235,19 @@
     font-size: 280%;
 }
 
-.down{
+.down {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 40vh;
-    width:90%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 
 
-
-.card2{
-    grid-area: card2;
-}
-.card3{
-    grid-area: card3;
-}
-.card4{
-    grid-area: card4;
-}
-.card5{
-    grid-area: card5;
-}
-.card6{
-    grid-area: card6;
-}
-
-
 .btn {
-    display:block;
+    display: block;
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -252,23 +257,16 @@
 }
 
 @media (max-width: 880px) {
-    .list-sity{
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas:"card1"
-        "card2"
-        "card3"
-        "card4"
-        "card5"
-        "card6";
-    }
-}
-@media  (max-width: 502px){
-    .big-info{
-        font-size: 2vw;
+    #double .card {
+        width: 100%;
     }
 }
 
+@media (max-width: 502px) {
+    .big-info {
+        font-size: 2vw;
+    }
+}
 
 
 

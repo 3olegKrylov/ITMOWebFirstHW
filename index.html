@@ -2,334 +2,309 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+
     <title>Title</title>
 </head>
 
 <body>
-    <div class="header">
-        <div class="logo"><h1>Погода здесь</h1></div>
-        <button class="button-reload">Обновить геолокацию</button>
-        <div class="button-remove secbutton-reload">
-            <button class="btn " style="font-size: 200%">&#8635;</button>
+
+<div class="header">
+    <div class="logo"><h1>Погода здесь</h1></div>
+    <button id="find-me-mobile" class="button-reload">Обновить геолокацию</button>
+    <div class="button-remove secbutton-reload">
+        <button id="find-me" class="btn btn-reload" style="font-size: 200%">&#8635;</button>
+    </div>
+</div>
+
+
+<div class="kekbody">
+    <div class="main-city">
+        <div class="city"><h1 id="main_city">Saint-Petersburg</h1></div>
+        <div class="no-value"></div>
+        <div class="smile" style="font-size: 15vw; align-content: center; align-items: center" id="main-city-smile">
+            &#9800;
+        </div>
+        <div class="temperature" style="font-size: 15vw; align-content: center; align-items: center"
+             id="main-city-temperature">8C&deg;
         </div>
     </div>
 
-
-    <div class="kekbody">
-            <div class="main-city">
-                <div class="city"><h1>Saint-Petersburg</h1></div>
-                <div class="no-value"></div>
-                <div class="smile" style = "font-size: 15vw; align-content: center; align-items: center" >&#9800;</div>
-                <div class="temperature" style = "font-size: 15vw; align-content: center; align-items: center">8C&deg;</div>
-            </div>
-
-            <div class="list-info">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info big-info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-            </div>
-
-        <div class="serch-line">
-            <h1 class="serch-title">Избранное</h1>
-            <div class="serch">
-                <input  style="height: 50px; width: 50%" type="text" placeholder="Добавить Новый Город"/>
-                <button class="btn" style="font-size: 200%">+</button>
-            </div>
+    <div class="list-info" id="main-city-info">
+        <div class="part">
+            <div class="name">Ветер</div>
+            <div class="info" id="main-city-wind">Moderate breeze, 6.0 m/s, North-northwest</div>
         </div>
 
-        <li class="list-sity">
-            <ul class="card1">
-                <div class="card1-line">
-                    <div class="city"><h2>Moskow</h2></div>
-                    <div class="center-info" >
-                        <div class="temperature">8C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
+
+        <div class="part">
+            <div class="name">Облачность</div>
+            <div class="info" id="main-city-cloudy">Broken cloud</div>
+        </div>
+
+
+        <div class="part">
+            <div class="name">Давление</div>
+            <div class="info" id="main-city-pressure">1013 hpa</div>
+        </div>
+
+
+        <div class="part">
+            <div class="name">Влажность</div>
+            <div class="info" id="main-city-humidity">52%</div>
+        </div>
+
+
+        <div class="part">
+            <div class="name">Координаты</div>
+            <div class="info" id="main-city-coordinate">[59.88, 30.42]</div>
+        </div>
+    </div>
+
+    <div class="serch-line">
+        <h1 class="serch-title">Избранное</h1>
+        <div class="serch">
+            <input style="height: 50px; width: 50%" type="text" placeholder="Добавить Новый Город" class="input_text"
+                   id="input_city"/>
+            <button class="btn btn_serch" id="add-city" style="font-size: 200%">+</button>
+        </div>
+    </div>
+
+    <!--Template карточки города-->
+    <template id="tmpl">
+        <li class="card">
+            <div class="card1-line">
+                <div class="city"><h2 id="card-city">Чебурек</h2></div>
+                <div class="center-info">
+                    <div class="temperature" id="card-temperature">8C&deg;</div>
+                    <div class="smile" id="card-smile">&#9800;</div>
+                </div>
+                <div class="button-remove">
+                    <button class="btn" style="font-size: 200%" id="delete-card">x</button>
+                </div>
+            </div>
+
+
+            <div class="down">
+                <div class="part">
+                    <div class="name">Ветер</div>
+                    <div class="info" id="card-wind">-</div>
                 </div>
 
 
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-                </div>
-
-            </ul>
-            <ul class="card2">
-                <div class="card1-line">
-                    <div class="city"><h2>Helsinki</h2></div>
-                    <div class="center-info">
-                        <div class="temperature">5C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
+                <div class="part">
+                    <div class="name">Облачность</div>
+                    <div class="info" id="card-cloudy">-</div>
                 </div>
 
 
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-                </div>
-            </ul>
-            <ul class="card3">
-                <div class="card1-line">
-                    <div class="city"><h2>Helsinki</h2></div>
-                    <div class="center-info">
-                        <div class="temperature">8C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
+                <div class="part">
+                    <div class="name">Давление</div>
+                    <div class="info" id="card-pressure">-</div>
                 </div>
 
 
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-                </div>
-            </ul>
-            <ul class="card4">
-                <div class="card1-line">
-                    <div class="city"><h2>Helsinki</h2></div>
-                    <div class="center-info">
-                        <div class="temperature">8C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
+                <div class="part">
+                    <div class="name">Влажность</div>
+                    <div class="info" id="card-humidity">-</div>
                 </div>
 
 
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
+                <div class="part">
+                    <div class="name">Координаты</div>
+                    <div class="info" id="card-coordinate">-</div>
                 </div>
-            </ul>
-            <ul class="card5">
-                <div class="card1-line">
-                    <div class="city"><h2>Helsinki</h2></div>
-                    <div class="center-info">
-                        <div class="temperature">8C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
-                </div>
+            </div>
 
-
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest </div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-                </div>
-            </ul>
-            <ul class="card6">
-                <div class="card1-line">
-                    <div class="city"><h2>Moskow</h2></div>
-                    <div class="center-info">
-                        <div class="temperature">8C&deg;</div>
-                        <div class="smile" >&#9800;</div>
-                    </div>
-                    <div class="button-remove">
-                        <button class="btn" style="font-size: 200%">x</button>
-                    </div>
-                </div>
-
-
-                <div class="down">
-                    <div class="part">
-                        <div class="name">Ветер</div>
-                        <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Облачность</div>
-                        <div class="info">Broken cloud</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Давление</div>
-                        <div class="info">1013 hpa</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Влажность</div>
-                        <div class="info">52%</div>
-                    </div>
-
-
-                    <div class="part">
-                        <div class="name">Координаты</div>
-                        <div class="info">[59.88, 30.42]</div>
-                    </div>
-                </div>
-            </ul>
         </li>
-    </div>
+    </template>
+    <!--Конец Template карточки погоды-->
+
+    <ul class="list-sity" id="double">
+
+
+        <li class="card">
+            <div class="card1-line">
+                <div class="city"><h2>Helsinki</h2></div>
+                <div class="center-info">
+                    <div class="temperature">8C&deg;</div>
+                    <div class="smile">&#9800;</div>
+                </div>
+                <div class="button-remove">
+                    <button class="btn" style="font-size: 200%">x</button>
+                </div>
+            </div>
+
+
+            <div class="down">
+                <div class="part">
+                    <div class="name">Ветер</div>
+                    <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Облачность</div>
+                    <div class="info">Broken cloud</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Давление</div>
+                    <div class="info">1013 hpa</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Влажность</div>
+                    <div class="info">52%</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Координаты</div>
+                    <div class="info">[59.88, 30.42]</div>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card1-line">
+                <div class="city"><h2>Helsinki</h2></div>
+                <div class="center-info">
+                    <div class="temperature">8C&deg;</div>
+                    <div class="smile">&#9800;</div>
+                </div>
+                <div class="button-remove">
+                    <button class="btn" style="font-size: 200%">x</button>
+                </div>
+            </div>
+
+
+            <div class="down">
+                <div class="part">
+                    <div class="name">Ветер</div>
+                    <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Облачность</div>
+                    <div class="info">Broken cloud</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Давление</div>
+                    <div class="info">1013 hpa</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Влажность</div>
+                    <div class="info">52%</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Координаты</div>
+                    <div class="info">[59.88, 30.42]</div>
+                </div>
+            </div>
+        </li>
+
+        <li class="card">
+            <div class="card1-line">
+                <div class="city"><h2>Moskow</h2></div>
+                <div class="center-info">
+                    <div class="temperature">8C&deg;</div>
+                    <div class="smile">&#9800;</div>
+                </div>
+                <div class="button-remove">
+                    <button class="btn" style="font-size: 200%">x</button>
+                </div>
+            </div>
+
+
+            <div class="down">
+                <div class="part">
+                    <div class="name">Ветер</div>
+                    <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Облачность</div>
+                    <div class="info">Broken cloud</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Давление</div>
+                    <div class="info">1013 hpa</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Влажность</div>
+                    <div class="info">52%</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Координаты</div>
+                    <div class="info">[59.88, 30.42]</div>
+                </div>
+            </div>
+        <li/>
+
+        <li class="card">
+            <div class="card1-line">
+                <div class="city"><h2>Moskow</h2></div>
+                <div class="center-info">
+                    <div class="temperature">8C&deg;</div>
+                    <div class="smile">&#9800;</div>
+                </div>
+                <div class="button-remove">
+                    <button class="btn" style="font-size: 200%">x</button>
+                </div>
+            </div>
+
+
+            <div class="down">
+                <div class="part">
+                    <div class="name">Ветер</div>
+                    <div class="info">Moderate breeze, 6.0 m/s, North-northwest</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Облачность</div>
+                    <div class="info">Broken cloud</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Давление</div>
+                    <div class="info">1013 hpa</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Влажность</div>
+                    <div class="info">52%</div>
+                </div>
+
+
+                <div class="part">
+                    <div class="name">Координаты</div>
+                    <div class="info">[59.88, 30.42]</div>
+                </div>
+            </div>
+        <li/>
+    </ul>
+</div>
+
+<script src="1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>

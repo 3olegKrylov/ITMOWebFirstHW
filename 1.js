@@ -78,7 +78,6 @@ function addCity() {
     }
 
     var inputSity = document.getElementById('input_city').value
-    console.log(inputSity)
     var ul = document.getElementById("double");
     var template = document.getElementById('tmpl')
 
@@ -131,42 +130,50 @@ function addCity() {
 
 function updateCards(){
 
+    var CITY = {
+        name: null,
+        wind: null,
+        cloudy: null,
+        pressure: null,
+        humidity: null,
+        coordinate: null,
+        temperature: null,
+        img: null
+    }
+
+
     var maxindex = 0
-    for(let i=0; i<localStorage.length; i++) {
+
+    for(let i=0; i < localStorage.length; i++) {
         var ul = document.getElementById("double");
         var key = localStorage.key(i);
+
 
         if (parseInt(key) > maxindex){
             maxindex = parseInt(key)
         }
         var inputSity = localStorage.getItem(key)
-
+        console.log(inputSity)
         var template = document.getElementById('tmpl')
-        var clone = template.content.cloneNode(true)
 
-        clone.querySelector("li").id = parseInt(key);
 
-        clone.getElementById("delete-card").onclick = function () {
-            elem = document.getElementById(parseInt(key));
-            elem.parentNode.removeChild(elem);
-            localStorage.removeItem(parseInt(key))
-        };
-
-        var CITY = {
-            name: null,
-            wind: null,
-            cloudy: null,
-            pressure: null,
-            humidity: null,
-            coordinate: null,
-            temperature: null,
-            img: null
-        }
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
             .then(response => response.json())
             .then(function (data) {
                 console.log(data);
+
+
+                var clone = template.content.cloneNode(true)
+
+                clone.querySelector("li").id = parseInt(key);
+
+                clone.getElementById("delete-card").onclick = function () {
+                    elem = document.getElementById(parseInt(key));
+                    elem.parentNode.removeChild(elem);
+                    localStorage.removeItem(parseInt(key))
+                };
+
 
                 CITY.name = data.name;
                 CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
@@ -194,7 +201,7 @@ function updateCards(){
 
     }
 
-    indexCard=maxindex+1;
+    indexCard = maxindex+1;
 }
 
 

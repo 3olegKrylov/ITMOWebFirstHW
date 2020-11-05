@@ -198,6 +198,7 @@
     overflow: hidden;
     list-style-type: none;
     width: 90%;
+
 }
 
 .card {
@@ -209,6 +210,9 @@
 
 #double .card {
     width: 50%;
+}
+#double.list-sity{
+    margin-left: 0%;
 }
 
 
@@ -262,7 +266,10 @@ font-size: 140%;
         width: 100%;
     }
     .card1-line {
-        margin-right: 0%;
+        margin-right: 0%
+    }
+    .list-sity{
+
     }
 }
 

@@ -66,7 +66,7 @@ function geoFindMe() {
 
 // Функционал добавления города
 //TODO: дать возможность загрузить карточку и дальше загружать её, чтобы был виден процесс загрузки
-function addCity() {
+async function addCity() {
 
     var CITY = {
         name: null,
@@ -101,54 +101,59 @@ function addCity() {
     ul.appendChild(clone)
 
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
-        .then(resp => {
-            if (!resp.ok) {
-                alert("error: " + err)
-                elem = document.getElementById(inCard);
-                elem.parentNode.removeChild(elem);
-                localStorage.removeItem(inCard)
-            }
-            return resp.json();
-        })
-        .then(function (data) {
-            console.log(data);
+    try {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
+            .then(resp => {
+                if (!resp.ok || resp.status > 400) {
+                    elem = document.getElementById(inCard);
+                    elem.parentNode.removeChild(elem);
+                    localStorage.removeItem(inCard)
+                    alert("city is not found")
+                }
 
 
-            CITY.name = data.name;
-            CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
-            CITY.cloudy = data.weather[0].description;
-            CITY.pressure = data.main.pressure + " hpa";
-            CITY.humidity = data.main.humidity + "%";
-            CITY.coordinate = "[" + data.coord.lon + ", " + data.coord.lat + "]";
-            CITY.temperature = Math.round(data.main.temp - 273) + "C" + `&deg`;
-            CITY.img = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+                return resp.json();
+            })
+            .then(function (data) {
+                console.log(data);
 
-            console.log("kek")
 
-            document.getElementById(inCard).querySelector(`#card-city`).innerHTML = CITY.name
-            document.getElementById(inCard).querySelector(`#card-wind`).innerHTML = CITY.wind;
-            document.getElementById(inCard).querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
-            document.getElementById(inCard).querySelector(`#card-pressure`).innerHTML = CITY.pressure;
-            document.getElementById(inCard).querySelector(`#card-humidity`).innerHTML = CITY.humidity;
-            document.getElementById(inCard).querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
-            document.getElementById(inCard).querySelector(`#card-temperature`).innerHTML = CITY.temperature;
-            document.getElementById(inCard).querySelector(`#card-smile`).innerHTML = CITY.img;
+                CITY.name = data.name;
+                CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
+                CITY.cloudy = data.weather[0].description;
+                CITY.pressure = data.main.pressure + " hpa";
+                CITY.humidity = data.main.humidity + "%";
+                CITY.coordinate = "[" + data.coord.lon + ", " + data.coord.lat + "]";
+                CITY.temperature = Math.round(data.main.temp - 273) + "C" + `&deg`;
+                CITY.img = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
 
-            localStorage.getItem(inCard)
-            localStorage.setItem(inCard, inputSity)
+                console.log("kek")
 
-            ul.appendChild(clone)
-        })
+                document.getElementById(inCard).querySelector(`#card-city`).innerHTML = CITY.name
+                document.getElementById(inCard).querySelector(`#card-wind`).innerHTML = CITY.wind;
+                document.getElementById(inCard).querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
+                document.getElementById(inCard).querySelector(`#card-pressure`).innerHTML = CITY.pressure;
+                document.getElementById(inCard).querySelector(`#card-humidity`).innerHTML = CITY.humidity;
+                document.getElementById(inCard).querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
+                document.getElementById(inCard).querySelector(`#card-temperature`).innerHTML = CITY.temperature;
+                document.getElementById(inCard).querySelector(`#card-smile`).innerHTML = CITY.img;
 
-        .catch(
-            err => function () {
-                alert("error: " + err)
-                elem = document.getElementById(inCard);
-                elem.parentNode.removeChild(elem);
-                localStorage.removeItem(inCard)
-            }
-        )
+                localStorage.getItem(inCard)
+                localStorage.setItem(inCard, inputSity)
+
+                ul.appendChild(clone)
+            })
+
+            .catch((e) => function () {
+                    elem = document.getElementById(inCard);
+                    elem.parentNode.removeChild(elem);
+                    localStorage.removeItem(inCard)
+                    alert("May be you not have internet ")
+                }
+            )
+    }catch (e) {
+        console.log(e + "no inet")
+    }
 
 
 }

@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c9e2903-270d-4cc4-a565-441a468d3128" name="Default Changelist" comment="fix all">
+    <list default="true" id="8c9e2903-270d-4cc4-a565-441a468d3128" name="Default Changelist" comment="fix some bags">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +88,7 @@
       <workItem from="1603652338887" duration="13426000" />
       <workItem from="1603955460332" duration="1968000" />
       <workItem from="1604554920621" duration="8106000" />
-      <workItem from="1605605010021" duration="8507000" />
+      <workItem from="1605605010021" duration="11161000" />
     </task>
     <task id="LOCAL-00001" summary="fixed name">
       <created>1602239234386</created>
@@ -134,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604561931709</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix some bags">
+      <created>1605764556418</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605764556419</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +164,8 @@
     <MESSAGE value="fix first lab" />
     <MESSAGE value="fix grid" />
     <MESSAGE value="fix card" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix card" />
+    <MESSAGE value="fix some bags" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bags" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602231442000">
@@ -238,9 +244,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="304" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1605737695860" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605764507799">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605764558814">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605764507799" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605764558814" />
   </component>
 </project>

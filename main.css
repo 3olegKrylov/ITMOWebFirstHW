@@ -75,6 +75,7 @@
 }
 
 .main-city {
+    float: left;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -103,6 +104,7 @@
 
 
 .list-info {
+    float: left;
     grid-area: list-info;
     display: flex;
     flex-direction: column;
@@ -124,9 +126,6 @@
     width: 90%;
 }
 
-.list-sity {
-    grid-area: list-sity;
-}
 
 .part {
     display: flex;
@@ -156,6 +155,7 @@
 
 
 .serch-line {
+    float: left;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -195,14 +195,14 @@
 
 /*Стили списка катрочек избранных городов*/
 .list-sity {
-    overflow: hidden;
+    grid-area: list-sity;
     list-style-type: none;
     width: 90%;
+    display:inline-block;
 
 }
 
 .card {
-    float: left;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -210,18 +210,26 @@
 
 #double .card {
     width: 50%;
+    float: left;
 }
-#double.list-sity{
-    margin-left: 0%;
+
+.list-sity{
+    margin-right: 5%;
+    margin-left: 5%;
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+
 }
+
+
 
 
 .card1-line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: auto;
-    margin-right: 10%;
     align-items: center;
 
 
@@ -266,11 +274,8 @@ font-size: 140%;
         width: 100%;
     }
     .card1-line {
-        margin-right: 0%
     }
-    .list-sity{
 
-    }
 }
 
 @media (max-width: 502px) {

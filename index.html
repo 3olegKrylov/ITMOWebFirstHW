@@ -64,8 +64,7 @@
     <div class="serch-line">
         <h1 class="serch-title">Избранное</h1>
         <div class="serch">
-            <input style="height: 50px; width: 100%" type="text" placeholder="Добавить Новый Город" class="input_text"
-                   id="input_city"/>
+            <input style="height: 50px; width: 100%" type="text" placeholder="Добавить Новый Город" class="input_text" id="input_city"/>
             <button class="btn btn_serch" id="add-city" style="font-size: 200%">+</button>
         </div>
     </div>
@@ -74,10 +73,10 @@
     <template id="tmpl">
         <li class="card">
             <div class="card1-line">
-                <div class="city"><h2 id="card-city">Чебурек</h2></div>
+                <div class="city"><h2 id="card-city">Загрузка города</h2></div>
                 <div class="center-info" >
-                    <p class="temperature" id="card-temperature" style="font-size: 140%">8C&deg;</p>
-                    <div class="smile" id="card-smile">&#9800;</div>
+                    <p class="temperature" id="card-temperature" style="font-size: 140%">?&deg;</p>
+                    <div class="smile" id="card-smile" style="font-size: 500%">&#9800; </div>
                 </div>
                 <div class="button-remove">
                     <button class="btn" style="font-size: 200%" id="delete-card">x</button>
@@ -119,12 +118,11 @@
         </li>
     </template>
     <!--Конец Template карточки погоды-->
-
-    <ul class="list-sity" id="double">
-
+    <ul class="list-sity" id="double" style="text-align:center;">
 
 
     </ul>
+
 </div>
 
 <script src="1.js"></script>

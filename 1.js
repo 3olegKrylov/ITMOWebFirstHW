@@ -1,5 +1,6 @@
 var indexCard = 0
 
+//опредяляет настоящую геолокацию и обновляет верхний экран
 function geoFindMe() {
 
     document.querySelector('#main_city').innerHTML = '';
@@ -64,6 +65,7 @@ function geoFindMe() {
 
 
 // Функционал добавления города
+//TODO: дать возможность загрузить карточку и дальше загружать её, чтобы был виден процесс загрузки
 function addCity() {
 
     var CITY = {
@@ -78,6 +80,7 @@ function addCity() {
     }
 
     var inputSity = document.getElementById('input_city').value
+    document.getElementById('input_city').value = null
     var ul = document.getElementById("double");
     var template = document.getElementById('tmpl')
 
@@ -85,8 +88,8 @@ function addCity() {
     var clone = template.content.cloneNode(true)
     var inCard = indexCard
     indexCard++;
+    console.log(inCard)
     clone.querySelector("li").id = inCard;
-
 
 
     clone.getElementById("delete-card").onclick = function () {
@@ -95,11 +98,22 @@ function addCity() {
         localStorage.removeItem(inCard)
     };
 
+    ul.appendChild(clone)
+
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
-        .then(response => response.json())
+        .then(resp => {
+            if (!resp.ok) {
+                alert("error: " + err)
+                elem = document.getElementById(inCard);
+                elem.parentNode.removeChild(elem);
+                localStorage.removeItem(inCard)
+            }
+            return resp.json();
+        })
         .then(function (data) {
             console.log(data);
+
 
             CITY.name = data.name;
             CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
@@ -110,25 +124,36 @@ function addCity() {
             CITY.temperature = Math.round(data.main.temp - 273) + "C" + `&deg`;
             CITY.img = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
 
-            clone.querySelector(`#card-city`).innerHTML = CITY.name
-            clone.querySelector(`#card-wind`).innerHTML = CITY.wind;
-            clone.querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
-            clone.querySelector(`#card-pressure`).innerHTML = CITY.pressure;
-            clone.querySelector(`#card-humidity`).innerHTML = CITY.humidity;
-            clone.querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
-            clone.querySelector(`#card-temperature`).innerHTML = CITY.temperature;
-            clone.querySelector(`#card-smile`).innerHTML = CITY.img;
+            console.log("kek")
+
+            document.getElementById(inCard).querySelector(`#card-city`).innerHTML = CITY.name
+            document.getElementById(inCard).querySelector(`#card-wind`).innerHTML = CITY.wind;
+            document.getElementById(inCard).querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
+            document.getElementById(inCard).querySelector(`#card-pressure`).innerHTML = CITY.pressure;
+            document.getElementById(inCard).querySelector(`#card-humidity`).innerHTML = CITY.humidity;
+            document.getElementById(inCard).querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
+            document.getElementById(inCard).querySelector(`#card-temperature`).innerHTML = CITY.temperature;
+            document.getElementById(inCard).querySelector(`#card-smile`).innerHTML = CITY.img;
 
             localStorage.getItem(inCard)
             localStorage.setItem(inCard, inputSity)
+
             ul.appendChild(clone)
         })
 
-        .catch(err => console.log("Wrong city name!" + err))
+        .catch(
+            err => function () {
+                alert("error: " + err)
+                elem = document.getElementById(inCard);
+                elem.parentNode.removeChild(elem);
+                localStorage.removeItem(inCard)
+            }
+        )
+
 
 }
 
-function updateCards(){
+function updateCards() {
 
     var CITY = {
         name: null,
@@ -144,18 +169,17 @@ function updateCards(){
 
     var maxindex = 0
 
-    for(let i=0; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         var ul = document.getElementById("double");
         var key = localStorage.key(i);
 
 
-        if (parseInt(key) > maxindex){
+        if (parseInt(key) > maxindex) {
             maxindex = parseInt(key)
         }
         var inputSity = localStorage.getItem(key)
         console.log(inputSity)
         var template = document.getElementById('tmpl')
-
 
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
@@ -171,7 +195,7 @@ function updateCards(){
                 clone.getElementById("delete-card").onclick = function () {
                     elem = document.getElementById(parseInt(key));
                     elem.parentNode.removeChild(elem);
-                    localStorage.removeItem(parseInt(key))
+                    localStorage.removeItem(parseInt(key));
                 };
 
 
@@ -197,13 +221,24 @@ function updateCards(){
 
             })
 
-            .catch(err => console.log("Wrong city name!" + err))
+            .catch(
+                err => console.log("Wrong city name!")
+            )
+
 
     }
 
-    indexCard = maxindex+1;
+    indexCard = maxindex + 1;
 }
 
+var input = document.getElementById("input_city");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        addCity()
+    }
+});
 
 document.querySelector('#add-city').addEventListener('click', addCity);
 document.querySelector('#find-me').addEventListener('click', geoFindMe);

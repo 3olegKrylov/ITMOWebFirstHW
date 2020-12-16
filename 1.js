@@ -1,5 +1,18 @@
-var indexCard = 0
+// var form = document.forms.forma;
+// form.addEventListener('submit', addCity());
 
+// var input = document.getElementById("input_city");
+//
+// // Execute a function when the user releases a key on the keyboard
+// input.addEventListener("keyup", function (event) {
+//     if (event.keyCode === 13) {
+//         addCity()
+//     }
+// });
+
+
+var indexCard = 0
+const myForm = document.forms.form;
 //опредяляет настоящую геолокацию и обновляет верхний экран
 function geoFindMe() {
 
@@ -63,10 +76,23 @@ function geoFindMe() {
 
 }
 
+function logSubmit(event) {
+    console.log("Я добавил тебе город - чекай ")
+    var nameOfSity = myform.nameSity.value;
+
+    addCity(nameOfSity)
+
+
+    myform.nameSity.value=""
+
+
+
+    event.preventDefault();
+}
 
 // Функционал добавления города
 //TODO: дать возможность загрузить карточку и дальше загружать её, чтобы был виден процесс загрузки
-async function addCity() {
+async function addCity(nameOfSity) {
 
     var CITY = {
         name: null,
@@ -79,8 +105,8 @@ async function addCity() {
         img: null
     }
 
-    var inputSity = document.getElementById('input_city').value
-    document.getElementById('input_city').value = null
+    var inputSity = nameOfSity
+
     var ul = document.getElementById("double");
     var template = document.getElementById('tmpl')
 
@@ -235,22 +261,16 @@ function updateCards() {
 
     indexCard = maxindex + 1;
 }
+myForm.addEventListener('submit', logSubmit);
 
-var input = document.getElementById("input_city");
 
-// Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-        addCity()
-    }
-});
-
-document.querySelector('#add-city').addEventListener('click', addCity);
+document.querySelector('#add-city').addEventListener('click', logSubmit);
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
 document.querySelector('#find-me-mobile').addEventListener('click', geoFindMe);
 
 updateCards()
 geoFindMe()
+
 
 
 

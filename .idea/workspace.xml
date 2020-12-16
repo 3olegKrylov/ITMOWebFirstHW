@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c9e2903-270d-4cc4-a565-441a468d3128" name="Default Changelist" comment="fix some bags">
+    <list default="true" id="8c9e2903-270d-4cc4-a565-441a468d3128" name="Default Changelist" comment="fix card disappear">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,14 @@
       <workItem from="1603652338887" duration="13426000" />
       <workItem from="1603955460332" duration="1968000" />
       <workItem from="1604554920621" duration="8106000" />
-      <workItem from="1605605010021" duration="11161000" />
+      <workItem from="1605605010021" duration="12259000" />
+      <workItem from="1605861430259" duration="861000" />
+      <workItem from="1605886507978" duration="420000" />
+      <workItem from="1606679345014" duration="10544000" />
+      <workItem from="1606913533837" duration="7502000" />
+      <workItem from="1607675682576" duration="2221000" />
+      <workItem from="1608143968506" duration="121000" />
+      <workItem from="1608145297055" duration="4273000" />
     </task>
     <task id="LOCAL-00001" summary="fixed name">
       <created>1602239234386</created>
@@ -139,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605764556419</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix card disappear">
+      <created>1605770731434</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605770731434</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +180,8 @@
     <MESSAGE value="fix grid" />
     <MESSAGE value="fix card" />
     <MESSAGE value="fix some bags" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bags" />
+    <MESSAGE value="fix card disappear" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix card disappear" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602231442000">
@@ -180,22 +196,26 @@
       <screen x="0" y="23" width="1440" height="816" />
     </state>
     <state x="505" y="162" key="Github.UntrackedFilesDialog/0.23.1440.816@0.23.1440.816" timestamp="1601473889412" />
-    <state width="1419" height="304" key="GridCell.Tab.0.bottom" timestamp="1605737695855">
+    <state width="1419" height="86" key="GridCell.Tab.0.bottom" timestamp="1607001478654">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1605737695855" />
-    <state width="1419" height="304" key="GridCell.Tab.0.center" timestamp="1605737695854">
+    <state width="1419" height="4" key="GridCell.Tab.0.bottom/0.0.1440.900/-840.-900.1600.900@0.0.1440.900" timestamp="1606915237128" />
+    <state width="1419" height="86" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607001478654" />
+    <state width="1419" height="86" key="GridCell.Tab.0.center" timestamp="1607001478654">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="304" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1605737695854" />
-    <state width="1419" height="304" key="GridCell.Tab.0.left" timestamp="1605737695854">
+    <state width="1419" height="4" key="GridCell.Tab.0.center/0.0.1440.900/-840.-900.1600.900@0.0.1440.900" timestamp="1606915237125" />
+    <state width="1419" height="86" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607001478654" />
+    <state width="1419" height="86" key="GridCell.Tab.0.left" timestamp="1607001478653">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="304" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1605737695854" />
-    <state width="1419" height="304" key="GridCell.Tab.0.right" timestamp="1605737695854">
+    <state width="1419" height="4" key="GridCell.Tab.0.left/0.0.1440.900/-840.-900.1600.900@0.0.1440.900" timestamp="1606915237124" />
+    <state width="1419" height="86" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607001478653" />
+    <state width="1419" height="86" key="GridCell.Tab.0.right" timestamp="1607001478654">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="304" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1605737695854" />
+    <state width="1419" height="4" key="GridCell.Tab.0.right/0.0.1440.900/-840.-900.1600.900@0.0.1440.900" timestamp="1606915237127" />
+    <state width="1419" height="86" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607001478654" />
     <state width="1419" height="304" key="GridCell.Tab.1.bottom" timestamp="1605737695857">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -244,9 +264,15 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="304" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1605737695860" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605764558814">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605887498935">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605764558814" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605887498935" />
+    <state x="0" y="23" width="1440" height="804" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606914253755">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="0" y="23" width="1440" height="804" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900/-840.-900.1600.900@0.0.1440.900" timestamp="1606914253755" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.801/-840.-877.1600.877@0.23.1440.801" timestamp="1606725651262" />
+    <state x="100" y="100" width="1240" height="700" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.804/-840.-877.1600.877@0.23.1440.804" timestamp="1606728633261" />
   </component>
 </project>

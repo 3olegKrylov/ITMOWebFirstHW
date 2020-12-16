@@ -63,10 +63,11 @@
 
     <div class="serch-line">
         <h1 class="serch-title">Избранное</h1>
-        <div class="serch">
-            <input style="height: 50px; width: 100%" type="text" placeholder="Добавить Новый Город" class="input_text" id="input_city"/>
+        <form class="serch" id="myform" name="form">
+            <input name="nameSity" style="height: 50px; width: 100%" type="text" placeholder="Добавить Новый Город" />
+
             <button class="btn btn_serch" id="add-city" style="font-size: 200%">+</button>
-        </div>
+        </form>
     </div>
 
     <!--Template карточки города-->
@@ -74,9 +75,9 @@
         <li class="card">
             <div class="card1-line">
                 <div class="city"><h2 id="card-city">Загрузка города</h2></div>
-                <div class="center-info" >
+                <div class="center-info">
                     <p class="temperature" id="card-temperature" style="font-size: 140%">?&deg;</p>
-                    <div class="smile" id="card-smile" style="font-size: 500%">&#9800; </div>
+                    <div class="smile" id="card-smile" style="font-size: 500%">&#9800;</div>
                 </div>
                 <div class="button-remove">
                     <button class="btn" style="font-size: 200%" id="delete-card">x</button>

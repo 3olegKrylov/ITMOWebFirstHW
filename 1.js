@@ -13,6 +13,7 @@
 
 var indexCard = 0
 const myForm = document.forms.form;
+
 //опредяляет настоящую геолокацию и обновляет верхний экран
 function geoFindMe() {
 
@@ -83,15 +84,62 @@ function logSubmit(event) {
     addCity(nameOfSity)
 
 
-    myform.nameSity.value=""
-
+    myform.nameSity.value = ""
 
 
     event.preventDefault();
 }
 
+async function API(inputSity) {
+    return await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
+}
+function callCallAPI(ul,clone ,CITY, inCard, inputSity) {
+    return API(inputSity)
+        .then(resp => {
+            if (!resp.ok || resp.status > 400) {
+                elem = document.getElementById(inCard);
+                elem.parentNode.removeChild(elem);
+                localStorage.removeItem(inCard)
+                alert("city is not found")
+            }
+            return resp.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            CITY.name = data.name;
+            CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
+            CITY.cloudy = data.weather[0].description;
+            CITY.pressure = data.main.pressure + " hpa";
+            CITY.humidity = data.main.humidity + "%";
+            CITY.coordinate = "[" + data.coord.lon + ", " + data.coord.lat + "]";
+            CITY.temperature = Math.round(data.main.temp - 273) + "C" + `&deg`;
+            CITY.img = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+
+            console.log("kek")
+
+            document.getElementById(inCard).querySelector(`#card-city`).innerHTML = CITY.name
+            document.getElementById(inCard).querySelector(`#card-wind`).innerHTML = CITY.wind;
+            document.getElementById(inCard).querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
+            document.getElementById(inCard).querySelector(`#card-pressure`).innerHTML = CITY.pressure;
+            document.getElementById(inCard).querySelector(`#card-humidity`).innerHTML = CITY.humidity;
+            document.getElementById(inCard).querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
+            document.getElementById(inCard).querySelector(`#card-temperature`).innerHTML = CITY.temperature;
+            document.getElementById(inCard).querySelector(`#card-smile`).innerHTML = CITY.img;
+
+            localStorage.getItem(inCard)
+            localStorage.setItem(inCard, inputSity)
+
+            ul.appendChild(clone)
+        })
+        .catch((e) => {
+            elem = document.getElementById(inCard);
+            elem.parentNode.removeChild(elem);
+            localStorage.removeItem(inCard)
+            alert("включи интернет")
+            console.log(e)
+        })
+}
 // Функционал добавления города
-//TODO: дать возможность загрузить карточку и дальше загружать её, чтобы был виден процесс загрузки
 async function addCity(nameOfSity) {
 
     var CITY = {
@@ -126,61 +174,7 @@ async function addCity(nameOfSity) {
 
     ul.appendChild(clone)
 
-
-    try {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputSity}&appid=d94765103f2d3e31a0239fea4c47c1f8`)
-            .then(resp => {
-                if (!resp.ok || resp.status > 400) {
-                    elem = document.getElementById(inCard);
-                    elem.parentNode.removeChild(elem);
-                    localStorage.removeItem(inCard)
-                    alert("city is not found")
-                }
-
-
-                return resp.json();
-            })
-            .then(function (data) {
-                console.log(data);
-
-
-                CITY.name = data.name;
-                CITY.wind = data.weather[0].main + ", " + data.wind.speed + "m/s, degree: " + data.wind.deg;
-                CITY.cloudy = data.weather[0].description;
-                CITY.pressure = data.main.pressure + " hpa";
-                CITY.humidity = data.main.humidity + "%";
-                CITY.coordinate = "[" + data.coord.lon + ", " + data.coord.lat + "]";
-                CITY.temperature = Math.round(data.main.temp - 273) + "C" + `&deg`;
-                CITY.img = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
-
-                console.log("kek")
-
-                document.getElementById(inCard).querySelector(`#card-city`).innerHTML = CITY.name
-                document.getElementById(inCard).querySelector(`#card-wind`).innerHTML = CITY.wind;
-                document.getElementById(inCard).querySelector(`#card-cloudy`).innerHTML = CITY.cloudy;
-                document.getElementById(inCard).querySelector(`#card-pressure`).innerHTML = CITY.pressure;
-                document.getElementById(inCard).querySelector(`#card-humidity`).innerHTML = CITY.humidity;
-                document.getElementById(inCard).querySelector(`#card-coordinate`).innerHTML = CITY.coordinate;
-                document.getElementById(inCard).querySelector(`#card-temperature`).innerHTML = CITY.temperature;
-                document.getElementById(inCard).querySelector(`#card-smile`).innerHTML = CITY.img;
-
-                localStorage.getItem(inCard)
-                localStorage.setItem(inCard, inputSity)
-
-                ul.appendChild(clone)
-            })
-
-            .catch((e) => function () {
-                    elem = document.getElementById(inCard);
-                    elem.parentNode.removeChild(elem);
-                    localStorage.removeItem(inCard)
-                    alert("May be you not have internet ")
-                }
-            )
-    }catch (e) {
-        console.log(e + "no inet")
-    }
-
+    await callCallAPI(ul, clone ,CITY, inCard, inputSity)
 
 }
 
@@ -261,6 +255,7 @@ function updateCards() {
 
     indexCard = maxindex + 1;
 }
+
 myForm.addEventListener('submit', logSubmit);
 
 

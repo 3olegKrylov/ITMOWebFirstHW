@@ -12,7 +12,7 @@
 
 
 var indexCard = 0
-const myForm = document.forms.form;
+
 
 //опредяляет настоящую геолокацию и обновляет верхний экран
 function geoFindMe() {
@@ -78,13 +78,14 @@ function geoFindMe() {
 }
 
 function logSubmit(event) {
+
     console.log("Я добавил тебе город - чекай ")
-    var nameOfSity = myform.nameSity.value;
+    var nameOfSity = event.srcElement.nameSity.value
 
     addCity(nameOfSity)
 
 
-    myform.nameSity.value = ""
+    event.srcElement.nameSity.value = ""
 
 
     event.preventDefault();
@@ -256,10 +257,8 @@ function updateCards() {
     indexCard = maxindex + 1;
 }
 
-myForm.addEventListener('submit', logSubmit);
+document.addEventListener('submit', logSubmit);
 
-
-document.querySelector('#add-city').addEventListener('click', logSubmit);
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
 document.querySelector('#find-me-mobile').addEventListener('click', geoFindMe);
 
